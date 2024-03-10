@@ -48,13 +48,25 @@ const db = mysql.createConnection({
 
 // Function to insert custom parking data into the parking_space table
 const insertCustomParkingData = () => {
-  const sql = 'INSERT INTO parking_spaces (id, name, lat, lng) VALUES (?, ?, ?, ?)';
+  const selectSql = 'SELECT id FROM parking_spaces WHERE id = ?';
+  const insertSql = 'INSERT INTO parking_spaces (id, name, lat, lng) VALUES (?, ?, ?, ?)';
+
   customParkingData.forEach((parkingSpace) => {
-    db.query(sql, [parkingSpace.id, parkingSpace.name, parkingSpace.lat, parkingSpace.lng], (err, result) => {
-      if (err) {
-        console.error('Error inserting parking space data:', err);
+    // Check if parking space with the same ID already exists
+    db.query(selectSql, [parkingSpace.id], (selectErr, selectResult) => {
+      if (selectErr) {
+        console.error('Error checking for existing parking space:', selectErr);
+      } else if (selectResult.length === 0) {
+        // Parking space with the same ID does not exist, insert it
+        db.query(insertSql, [parkingSpace.id, parkingSpace.name, parkingSpace.lat, parkingSpace.lng], (insertErr, insertResult) => {
+          if (insertErr) {
+            console.error('Error inserting parking space data:', insertErr);
+          } else {
+            console.log(`Parking space "${parkingSpace.name}" inserted successfully`);
+          }
+        });
       } else {
-        console.log(`Parking space "${parkingSpace.name}" inserted successfully`);
+        console.log(`Parking space with ID ${parkingSpace.id} already exists`);
       }
     });
   });
