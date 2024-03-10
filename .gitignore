@@ -1,22 +1,32 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules/
-/.pnp
-.pnp.js
+parking-management-frontend/node_modules/
+parking-management-backend/node_modules/
+parking-management-frontend/.pnp
+parking-management-backend/.pnp
+parking-management-frontend/.pnp.js
+parking-management-backend/.pnp.js
 
 # testing
-/coverage
+parking-management-frontend/coverage
+parking-management-backend/coverage
 
 # production
-/build
+parking-management-frontend/build
+parking-management-backend/build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+parking-management-frontend/.DS_Store
+parking-management-frontend/.env.local
+parking-management-frontend/.env.development.local
+parking-management-frontend/.env.test.local
+parking-management-frontend/.env.production.local
+parking-management-backend/.DS_Store
+parking-management-backend/.env.local
+parking-management-backend/.env.development.local
+parking-management-backend/.env.test.local
+parking-management-backend/.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
@@ -30,7 +40,8 @@ tmp
 /out-tsc
 
 # dependencies
-node_modules
+parking-management-frontend/node_modules
+parking-management-backend/node_modules
 
 # IDEs and editors
 /.idea
