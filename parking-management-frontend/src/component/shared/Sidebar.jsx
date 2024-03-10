@@ -11,20 +11,6 @@ const Sidebar = () => {
   const [showReservationForm, setShowReservationForm] = useState(false);
 
 
-  useEffect(() => {
-    // Simulate fetching nearby parking data based on the user's search location
-    // Replace this with your actual logic to fetch nearby parking data
-    // when the user searches for a location
-    const simulatedNearbyParking = [
-      { id: 1, name: 'Parking Space 1', location: 'Nairobi Central Park', price: '$5/hour' },
-      { id: 2, name: 'Parking Space 2', location: 'Mombasa Beachfront', price: '$7/hour' },
-      { id: 3, name: 'Parking Space 3', location: 'Masai Mara National Reserve', price: '$7/hour' },
-      { id: 4, name: 'Parking Space 4', location: 'Mount Kenya National Park', price: '$7/hour' },
-      // Add more parking spaces as needed
-    ];
-    setNearbyParkingData(simulatedNearbyParking);
-  }, []); // You might want to include location in the dependency array if needed
-
     const reserveParkingSpace = (parkingSpace) => {
       // Set the selected parking space and show the reservation form
       setSelectedParkingSpace(parkingSpace);
@@ -44,19 +30,15 @@ const Sidebar = () => {
         </div>
         <div className="flex-1 py-8 flex flex-col gap-0.5">
           {/* Display nearby parking spaces */}
-          {nearbyParkingData.map((parkingSpace) => (
-            <ParkingSpaceLink key={parkingSpace.id} parkingSpace={parkingSpace} onReserveClick={reserveParkingSpace} />
-          ))}
-        </div>
-        <div className='flex flex-col gap-0.5 pt-2 border-t border-neutral-700'>
           {DASHBOARD_SIDEBAR_BOTTOM_LINKS.map((item) => (
             <SidebarLink key={item.key} item={item} />
           ))}
-          <div className={linkClasses}>
-            <span className='text-xl cursor-pointer'> <HiOutlineLogout /> </span>
-            <span className='cursor-pointer'>Logout</span>
-          </div>
         </div>
+        {/* <div className='flex flex-col gap-0.5 pt-2 border-t border-neutral-700'> */}
+          {/* {DASHBOARD_SIDEBAR_BOTTOM_LINKS.map((item) => (
+            <SidebarLink key={item.key} item={item} /> 
+          ))} */}
+        {/* </div> */}
   
         {/* Reservation Form */}
         {showReservationForm && (

@@ -1,12 +1,6 @@
 import {
     HiOutlineViewGrid,
-    HiOutlineCube,
-    HiOutlineShoppingCart,
-    HiOutlineUsers,
-    HiOutlineAnnotation,
-    HiOutlineQuestionMarkCircle,
-    HiOutlineCog,
-    HiCalendar
+    HiOutlineLogout,
 } from 'react-icons/hi';
 
 
@@ -25,13 +19,13 @@ export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
     {
         key: "settings",
         label:"Dashboard",
-        path: "/stats",
+        path: "/map/stats",
         icon: <HiOutlineViewGrid />
     },
     {
-        key: "support",
-        label:"Help and Support",
-        path: "/support",
-        icon: <HiOutlineQuestionMarkCircle />
+        key: "leave",
+        label:"Logout",
+        path: "/",
+        icon: <HiOutlineLogout />        
     }
 ]
